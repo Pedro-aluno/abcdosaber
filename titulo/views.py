@@ -5,5 +5,17 @@ from django.shortcuts import render
 def show_view(request):
     return HttpResponse('<p>Minha View do App Títulos</p>')
 
-def show_oi(request):
-    return HttpResponse('<p>Ola</p>')
+def listar_exemplo(request):
+    pagina = 'Olá'
+    return HttpResponse(pagina)
+
+def abc(request):
+    pagina = 'ABC'
+    return HttpResponse(pagina)
+
+def index(request):
+    return render(request, 'index.html')    
+   
+
+
+
