@@ -1,30 +1,26 @@
-# Projeto "abcdosaber_uc3"
-
+# Projeto "abcdosaber_2006"
 Este é um projeto criado com o framework Django.
 Seu objetivo é fornecer aos alunos da unidade curricular correspondente, tutoria e apoio para o desenvolvimento das respectivas competências da unidade.
 
 ## Instalação
-
 Para instalar o projeto, utilize o MS Visual Studio Code e siga os seguintes passos:
 
 1. Clonar o projeto. 
 2. Criar um ambiente (environment) Python.
 3. Instalar no ambiente os respectivos pacotes envolvidos no projeto.
 
-> [!NOTE]
-> O ambiente virtual (environment) permite que você utilize diferentes versões do Python e/ou de módulos Python, permitindo, por exemplo, avaliar o comportamento de projeto nas versões instaladas.
+> [! NOTE]
+>O ambiente virtual (environment) permite que você utilize diferentes versões do Python e/ou de módulos Python, permitindo, por exemplo, avaliar o comportamento de projeto nas versões instaladas.
 
-> [!NOTE]
-> Os pacotes envolvidos no projeto podem ser encontrados no arquivo "requirements.txt".
+> [! NOTE]
+>Os pacotes envolvidos no projeto podem ser encontrados no arquivo "requirements.txt".
 
 ## Criando um ambiente (environment) para o projeto
-
-## Pela linha de comando do terminal, digite:
-
+### Pela linha de comando do terminal, digite:
 ```
 python -m venv .venv
-```
 
+```
 ### Pelo Visual Code
 
 1. Instalar as extensões do Python
@@ -61,8 +57,3 @@ deactivate
 ```
 
 ## Licença
-
-Por enquanto, não há uma licença definida para o projeto.
-
-
-

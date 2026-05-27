@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0g24nk_%f8&698-i4hy%+3ynbr6bx2%0)cur=m2oh+jn@2%^q('
+SECRET_KEY = 'django-insecure-!8gpm$mhj3)0o!^4t7fjd0*3e7o@n2uw!6mva0vyvb0@*-_1g*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'titulo.apps.TituloConfig',
+    'aluno.apps.AlunoConfig',
+    'instrutor.apps.InstrutorConfig',
+    'tipodeatividade.apps.TipodeatividadeConfig',
+    'turma.apps.TurmaConfig',
+    'utilitarios.apps.UtilitariosConfig',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'abcdosaber.urls'
@@ -57,8 +61,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates'
-        ],
+            'templates',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'PT-BR'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
