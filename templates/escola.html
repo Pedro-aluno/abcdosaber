@@ -3,51 +3,31 @@
 {% block title %}
     <title>Django - Exercícios</title>
 {% endblock %}
-
-
-<body>
-
-    <!-- seu codigo comeca aqui -->
-
-    <!-- container bootstrap -->
-    <header class="container px-0">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light px-0">
-
-            <!-- logo -->
-            <div>
-                <a class="navbar-brand mx-auto">
-                    <img src="static'img/python_64.png'">
-                </a>
-            </div>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar"
-                aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Navegação Alternativa">
-                Menu <span class="navbar-toggler-icon"></span>
-            </button>
-
     
 {% block menu %}
-            <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
-                <div class="navbar-nav">
-                    <a href="./escola.html" class="nav-link">Início</a>
-                    <a href="./tipoatividade/cadastroTiposAtividade.html" class="nav-link">Tipos de Atividade</a>
-                    <a href="./titulo/cadastroTitulos.html" class="nav-link">Títulos</a>
-                    <a href="./aluno/cadastroAluno.html" class="nav-link">Alunos</a>
-                    <a href="./instrutor/cadastroInstrutor.html" class="nav-link">Instrutor</a>
-                    <a href="./turma/cadastroTurma.html" class="nav-link">Turmas</a>
-                    <a href="./contato/contato.html" class="nav-link">Contato</a>
-                </div>
-            </div>
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+    <div class="navbar-nav">
+        <a href="/" class="nav-link">Início</a>
+        <a href="./tipoatividade/cadastroTiposAtividade.html" class="nav-link">Tipos de Atividade</a>
+        <a href="{% url 'titulo:listar' %}" class="nav-link">Títulos</a>
+        <a href="./aluno/cadastroAluno.html" class="nav-link">Alunos</a>
+        <a href="./instrutor/cadastroInstrutor.html" class="nav-link">Instrutor</a>
+        <a href="./turma/cadastroTurma.html" class="nav-link">Turmas</a>
+        <a href="./contato/contato.html" class="nav-link">Contato</a>
+    </div>
+</div>
 {% endblock %}
             
 {% block titulo_pagina %}
-        <div class="container text-center">
-            <div class="jumbotron mt-5">
-                <h1 class="display-4">Escola ABC do Saber</h1>
-            </div>
-        </div>
+<div class="container text-center">
+    <div class="jumbotron mt-5">
+        <h1 class="display-4">Escola ABC do Saber</h1>
+    </div>
+</div>
 {% endblock %}
 
-    </header>
+{% block corpo %}
+{% endblock %}
+
+
 
