@@ -23,5 +23,7 @@ class Aluno(models.Model):
         help_text="Informe que horário o aluno terminou de estudar",
         null=True,
     )
+
+    
     def __str__(self):
         return f"{self.matricula} {self.nome} {self.data_inicial} {self.data_final}"
