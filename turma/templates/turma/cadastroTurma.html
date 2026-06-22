@@ -1,24 +1,25 @@
-{% extends "base_templates.html" %}
+{% extends "base_template.html" %}
 
 {% block title %}
-    <title>AbcDoSaber - Turma</title>
+    <title>AbcDoSaber - Cadastrar_Turma</title>
 {% endblock %}
 
-{% block menu %}
-            <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+{% block menu %} 
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
                 <div class="navbar-nav">
                     <a href="/" class="nav-link">Início</a>
                     <a href="{% url 'turma:cadastro' %}" class="nav-link">Cadastrar</a>
                     <a href="{% url 'turma:listar' %}" class="nav-link">Listar</a>
                     <a href="{% url 'turma:registro_ausencia' %}" class="nav-link">Registrar Ausência</a>
                 </div>
-            </div>       
-{% endblock %}     
-        
+            </div>
+{% endblock %}            
+
+
 {% block titulo_pagina %}
 {% endblock %}
-  
-    {%block corpo %}
+
+{% block corpo %}
     <main class="container m-2 w-75 mx-auto my-font-family">
 
         <div class="row">
@@ -27,10 +28,11 @@
             </div>
         </div>
 
-
         <!-- formulario HTML -->
-        <form name="frmCadastrarTurma" action="#" method="post" class="my-label-color-purple">
+        <form name="frmCadastrarTurma" action="{% url 'turma:cadastrar' %}" method="post" class="my-label-color-purple">
 
+            {% csrf_token %}
+            
             <div class="form-group">
                 <label for="idHorarioAula" class="col-form-label">Horário da Aula</label>
                 <input class="form-control" type="time" id="idHorarioAula" name="horarioAula" required>

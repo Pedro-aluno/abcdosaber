@@ -5,25 +5,26 @@ class Aluno(models.Model):
     matricula = models.AutoField(
         primary_key=True,
         help_text="Matrícula do aluno",
-        
     )
 
     nome = models.CharField(
-        max_length=70,
-        null = False,
-        help_text="Informe o nome do aluno",
-    )
-    
-    data_inicial = models.DateField(
+        max_length=100,
         null=False,
-        help_text="Informe que horário o aluno começou a estudar",
+        help_text="Nome do aluno",
     )
 
-    data_final = models.DateField(
-        help_text="Informe que horário o aluno terminou de estudar",
+    datainicial= models.DateField(
+        max_length=70,
+        null=False,
+        help_text="Informe a data inicial do aluno",
+    )
+
+    datafinal= models.DateField(
+        max_length=70,
         null=True,
+        blank=True,
+        help_text="Informe a data final do aluno",
     )
 
-    
     def __str__(self):
-        return f"{self.matricula} {self.nome} {self.data_inicial} {self.data_final}"
+        return f'{self.matricula} {self.nome} {self.datainicial} {self.datafinal}'

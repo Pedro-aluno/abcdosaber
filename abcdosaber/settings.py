@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,13 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!8gpm$mhj3)0o!^4t7fjd0*3e7o@n2uw!6mva0vyvb0@*-_1g*'
+SECRET_KEY = 'django-insecure-m6z!tr@0x6w3b&19t&&6fp!0cqk@!6(yidvp&hi@jwq9n9$nvq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -46,6 +43,8 @@ INSTALLED_APPS = [
     'turma.apps.TurmaConfig',
     'utilitarios.apps.UtilitariosConfig',
     'contato.apps.ContatoConfig',
+
+
 ]
 
 MIDDLEWARE = [
@@ -114,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'pt-BR'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
@@ -127,7 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 
 
 # Default primary key field type

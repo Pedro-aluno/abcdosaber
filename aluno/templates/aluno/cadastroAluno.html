@@ -1,11 +1,11 @@
-{% extends "base_templates.html" %}
+{% extends "base_template.html" %}
 
 {% block title %}
-    <title>AbcDoSaber - Aluno</title>
+    <title>AbcDoSaber - Cadastro_Aluno</title>
 {% endblock %}
 
 {% block menu %}
-            <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
                 <div class="navbar-nav">
                     <a href="/" class="nav-link">Início</a>
                     <a href="{% url 'aluno:cadastro' %}" class="nav-link">Cadastrar</a>
@@ -13,12 +13,13 @@
                 </div>
             </div>
 {% endblock %}            
-        
+
+
 {% block titulo_pagina %}
 {% endblock %}
 
 {% block corpo %}
-    <main class="container m-2 w-75 mx-auto">
+  <main class="container m-2 w-75 mx-auto">
         <form action="#" method="POST" name="frmCadastrarAluno" id="idFrmCadastrarAluno">
             <div class="form-group">
                 <label for='idNome'>Nome</label>
@@ -34,5 +35,4 @@
             </div>
         </form>
     </main>
-{% endblock %}    
-
+{% endblock %}

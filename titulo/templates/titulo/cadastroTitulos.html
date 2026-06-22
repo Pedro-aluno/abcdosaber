@@ -1,26 +1,28 @@
-{% extends "base_templates.html" %}
+{% extends "base_template.html" %}
 
 {% block title %}
-    <title>AbcDoSaber - Titulo</title>
+    <title>AbcDoSaber - Cadastrar_Títulos</title>
 {% endblock %}
 
-{% block menu %}
-            <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+{% block menu %} 
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
                 <div class="navbar-nav">
                     <a href="/" class="nav-link">Início</a>
                     <a href="{% url 'titulo:cadastro' %}" class="nav-link">Cadastrar</a>
                     <a href="{% url 'titulo:listar' %}" class="nav-link">Listar</a>
                 </div>
-            </div>
-{% endblock %}
+            </div>    
+{% endblock %}            
 
 {% block titulo_pagina %}
 {% endblock %}
-        
 
 {% block corpo %}
-    <main class="container m-2 w-75 mx-auto">
-        <form action="#" method="POST" name="frmCadastrarTitulo" id="idFrmCadastrarTiposAtividade">
+<main class="container m-2 w-75 mx-auto">
+        <form action="{% url 'titulo:cadastrar' %}" method="POST" name="frmCadastrarTitulo" id="idFrmCadastrarTiposAtividade">
+
+            {% csrf_token %}
+
             <div class="form-group">
                 <label for='idDescricao'>Descrição</label>
                 <input class="form-control" type='text' id='idDescricao' name='descricao' placeholder='Informe a descrição' required>
@@ -31,4 +33,4 @@
             </div>
         </form>
     </main>
-    {% endblock %}
+{% endblock %}

@@ -1,0 +1,21 @@
+asgiref==3.11.1
+Django==4.2.18
+sqlparse==0.5.5
+tzdata==2026.2
+
+
+"pip install Django==4.2.18"
+#criar o "venv" tambem
+#crt + shift + p -> python: create environment -> venv
+
+
+#pip freeze > requirements.txt
+#add README.md
+
+
+
+# 10/06
+# criar a mão no models da turma igual ao do instrutor
+
+# 17/06
+# terminar de criar o forms.py da turma e aluno e todo o resante

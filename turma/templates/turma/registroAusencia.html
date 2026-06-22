@@ -1,48 +1,25 @@
-{% extends "base_templates.html" %}
+{% extends "base_template.html" %}
 
 {% block title %}
-    <title>AbcDoSaber - Turma</title>
+    <title>AbcDoSaber - Registrar_Ausência</title>
 {% endblock %}
 
-{% block menu %}
-            <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+{% block menu %} 
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
                 <div class="navbar-nav">
                     <a href="/" class="nav-link">Início</a>
                     <a href="{% url 'turma:cadastro' %}" class="nav-link">Cadastrar</a>
                     <a href="{% url 'turma:listar' %}" class="nav-link">Listar</a>
                     <a href="{% url 'turma:registro_ausencia' %}" class="nav-link">Registrar Ausência</a>
                 </div>
-            </div>
+            </div>    
 {% endblock %}            
 
 {% block titulo_pagina %}
 {% endblock %}
 
 {% block corpo %}
-     <main class="container m-2 mx-auto my-font-family">
-
-        <div class="row">
-            <div class="col text-center m-0">
-                <h2 class="mt-2 mb-5 my-h2">Registro de Ausências</h2>
-            </div>
-        </div>
-
-        <!-- formulario para escolher a turma -->
-        <form name="frmDefinirTurma" id="idFrmDefinirTurma" action="#" method="post" class="my-label-color-purple">
-
-            <!-- montagem do combo com as turmas cadastradas que tenha aluno -->
-            <div class="form-group">
-                <label for="idTurma">Turma</label>
-                <select class="form-control" id="idTurma" name="numeroTurma">
-                    <option value="0">Selecione...</option>
-                    <option value="1">Turma 0001 - 10:00:00</option>
-                    <option value="2">Turma 0002 - 13:00:00</option>
-                    <option value="3">Turma 0003 - 18:00:00</option>
-                </select>
-            </div>
-
-            <div class="form-group
-    <main class="container m-2 w-75 mx-auto my-font-family">
+<main class="container m-2 w-75 mx-auto my-font-family">
 
         <div class="row">
             <div class="col text-center m-0">
@@ -102,4 +79,3 @@
         </form>
     </main>
 {% endblock %}
-    

@@ -1,6 +1,12 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
 # Create your views here.
-def utilitarios(request):
-    return HttpResponse("<p>Olá, sou a view do app Utilitário!</p>")
+def neymar(request):
+    pagina = 'ABC'
+    return HttpResponse(pagina)
+
+
+def index(request):
+    return render(request, 'index.html')
+

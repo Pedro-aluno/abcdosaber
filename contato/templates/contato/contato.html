@@ -1,14 +1,14 @@
-{% extends "base_templates.html" %}
+{% extends "base_template.html" %}
 
 {% block title %}
     <title>AbcDoSaber - Contato</title>
 {% endblock %}
 
 {% block menu %}
-            <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
                 <div class="navbar-nav">
                     <a href="/" class="nav-link">Início</a>
-                    <a href="" class="nav-link">Tipos de Atividade</a>
+                    <a href="{% url 'tipodeatividade:cadastro' %}" class="nav-link">Cadastrar</a>
                     <a href="{% url 'titulo:cadastro' %}" class="nav-link">Títulos</a>
                     <a href="{% url 'aluno:cadastro' %}" class="nav-link">Alunos</a>
                     <a href="{% url 'instrutor:cadastro' %}" class="nav-link">Instrutor</a>
@@ -16,12 +16,13 @@
                 </div>
             </div>
 {% endblock %}            
-        
+
+
 {% block titulo_pagina %}
 {% endblock %}
 
 {% block corpo %}
-    <main class="container m-2 w-75 mx-auto minha-fonte">
+<main class="container m-2 w-75 mx-auto minha-fonte">
         
         <div class= "row">
             <div class="col text-center m-0">
@@ -97,6 +98,5 @@
                 <input type="submit" value="Enviar" class="btn btn-primary btn-md">
             </div>
         </form>
-    </main>
-{% endblock %}    
-
+    </main> 
+{% endblock %}
