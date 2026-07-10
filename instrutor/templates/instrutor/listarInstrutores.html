@@ -1,25 +1,24 @@
 {% extends "base_template.html" %}
 
 {% block title %}
-    <title>AbcDoSaber - Listar_Instrutores</title>
+    <title>AbcDoSaber - Instrutor</title>
 {% endblock %}
 
 {% block menu %}
-<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
-                <div class="navbar-nav">
-                    <a href="/" class="nav-link">Início</a>
-                    <a href="{% url 'instrutor:cadastro' %}" class="nav-link">Cadastrar</a>
-                    <a href="{% url 'instrutor:listar' %}" class="nav-link">Listar</a>
-                </div>
-            </div>
-{% endblock %}            
-
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'instrutor:cadastro' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'instrutor:listar' %}" class="nav-link">Listar</a>            
+        </div>
+    </div>
+{% endblock %}
 
 {% block titulo_pagina %}
 {% endblock %}
 
 {% block corpo %}
-<main class="container m-2 mx-auto my-font-family">
+    <main class="container m-2 mx-auto my-font-family">
 
         <div class="row">
             <div class="col text-center m-0">
@@ -27,98 +26,99 @@
             </div>
         </div>
 
-        <!-- tabela responsiva -->
         {% if instrutores %}
-        <div class="table-responsive">
+            <!-- tabela responsiva -->
+            <div class="table-responsive">
 
-            <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
-            <table class="table
-                        table-borderless
-                        text-center
-                        my-table-hover
-                        my-table-image
-                        my-table-td-first-child
-                        my-table-border-bottom
-                        my-table-th
-                        w-100">
+                <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
+                <table class="table
+                            table-borderless
+                            text-center
+                            my-table-hover
+                            my-table-image
+                            my-table-td-first-child
+                            my-table-border-bottom
+                            my-table-th
+                            w-100">
 
-                <!-- cabecalho -->
-                <thead>
+                    <!-- cabecalho -->
+                    <thead>
+                        <!-- linhas -->
+                        <tr>
+                            <!-- colunas cabecalho -->
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>RG</th>
+                            <th>Data Nascimento</th>
+                            <th>DDD</th>
+                            <th>Telefone</th>
+                            <th>Titularidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
                     <!-- linhas -->
+                    {% for i in instrutores %}
                     <tr>
-                        <!-- colunas cabecalho -->
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>RG</th>
-                        <th>Data Nascimento</th>
-                        <th>DDD</th>
-                        <th>Telefone</th>
-                        <th>Titularidade</th>
-                    </tr>
-                </thead>
-
-                <!-- linhas -->
-                {% for instrutor in instrutores %}
-                <tr>
-                    <td>{{instrutor.id}}</td>
-                    <td>{{instrutor.nome}}</td>
-                    <td>{{instrutor.rg}}</td>
-                    <td>{{instrutor.dataNascimento}}</td>
-                    <td>{{instrutor.ddd}}</td>
-                    <td>{{instrutor.telefone}}</td>
-                    <td>{{instrutor.codigo_titulo}}</td>
-                    <td>
-                            <a href="#" class="btn btn-mini"><i class="far fa-edit"></i></a>
-                            <button type="button" class="btn" role="button" data-target="#modalExcluirInstrutor"
-                                data-toggle="modal" data-descricao="{{instrutor.nome}}" 
-                                data-url="{% url 'instrutor:excluir' instrutor.id %}">
+                        <td> {{ i.id }} </td>
+                        <td> {{ i.nome }} </td>
+                        <td> {{ i.rg }} </td>
+                        <td> {{ i.data_nascimento }} </td>
+                        <td> {{ i.ddd }} </td>
+                        <td> {{ i.telefone }} </td>
+                        <td> {{ i.codigo_titulo.descricao }} </td>
+                        <td>
+                        <a href="#" class="btn btn-mini"><i class="far fa-edit"></i></a>
+                        <button type="button" class="btn" role="button" data-target="#modalExcluirInstrutor"
+                                data-toggle="modal" data-nome="{{ i.nome }}" 
+                                data-url="{% url 'titulo:excluir_titulo' i.id %}">
                                 
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    
-                </tr>
-                {% endfor %}
-            </table>
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </table>
 
-        </div>
+            </div>
         {% else %}
-        <div class="text-danger text-center">
-            <p>Não há instrutores cadastrados.</p>
-        </div>
+            <div class="text-danger text-center">
+                <p>Não há Instrutores cadastrados.</p>
+            </div>        
         {% endif %}
-        
 
     </main>
-<!-- Modais -->
+
+        <!-- Modais -->
     <div class="modal fade" id="modalExcluirInstrutor" role="dialog" aria-labelledby="Confirmação" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Confirmação</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Confirmação</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-            <div class="modal-body">
-                <p id="mensagemExclusao"></p>
-            </div>
+                <div class="modal-body">
+                    <p id="mensagemExclusao"></p>
+                </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnExcluir">Excluir</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnExcluir">Excluir</button>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+
 {% endblock %}
 
 {% block javascript_complementar %}
-    <!-- Prepara o modal com os dados da imagem do titulo a ser excluido -->
+    <!-- Prepara o modal com os dados da imagem do instrutor a ser excluido -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('#modalExcluirInstrutor').on('show.bs.modal', function(event) {
-                var descricao = $(event.relatedTarget).data('descricao');
+                var descricao = $(event.relatedTarget).data('nome');
                 var urlExcluir = $(event.relatedTarget).data('url');
                 $("#mensagemExclusao").text("Instrutor [  " + descricao + "  ]?");
 
@@ -134,6 +134,4 @@
             });            
         });
     </script>
-{% endblock javascript_complementar %}
-
-
+{% endblock javascript_complementar %} 

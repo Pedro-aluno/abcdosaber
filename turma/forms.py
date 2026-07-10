@@ -1,35 +1,13 @@
 from django import forms
-
+from django.utils import timezone
 
 class TurmaForm(forms.Form):
-    horarioAula= forms.TimeField(
-        required=True,
-        help_text="informe o horario da aula",
-    )
-
-    duracaoAula= forms.TimeField(
-        required=True,
-        help_text="Informe a duração da aula",
-    )
-
-    dataInicial= forms.DateField(
-        required=True,
-        help_text="Informe a data inicial",
-    )
-
-    codigoTipoAtividade= forms.CharField(
-        max_length=70,
-        required=True,
-        help_text="Informe o código do tipo de atividade",
-    )
-
-    matriculaMonitor= forms.CharField(
-        max_length=70,
-        required=True,
-        help_text="Informe o registro do monitor",
-    )
-
-    idInstrutor= forms.CharField(
-        required=True,
-        help_text="Informe o ID do instrutor",
-    )
+    horario_aula = forms.TimeField(required=True, help_text="Informe a hora de aula da Turma")
+    duracao_aula = forms.IntegerField(required=True, initial=4, help_text="Informe a duração da aula da Turma")
+    data_inicial = forms.DateField(required=True, help_text="Informe a data inicial da Turma" )
+    data_final = forms.DateField(required=False, help_text="Informe a data final da Turma" )    
+    codigo_atividade = forms.IntegerField(required=True, help_text="Informe o código do Tipo de Atividade da Turma")
+    matricula_monitor = forms.IntegerField(required=True, help_text="Informe a matrícula do Aluno Monitor da Turma")
+    id_instrutor = forms.IntegerField(required=True, help_text="Informe o id do Instrutor da Turma")
+    
+    

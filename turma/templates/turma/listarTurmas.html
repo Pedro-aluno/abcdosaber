@@ -1,25 +1,25 @@
 {% extends "base_template.html" %}
 
 {% block title %}
-    <title>AbcDoSaber - Listar_Turmas</title>
+    <title>AbcDoSaber - Turma</title>
 {% endblock %}
 
-{% block menu %} 
-<div class="collapse navbar-collapse justify-content-end" id="mynavbar">
-                <div class="navbar-nav">
-                    <a href="/" class="nav-link">Início</a>
-                    <a href="{% url 'turma:cadastro' %}" class="nav-link">Cadastrar</a>
-                    <a href="{% url 'turma:listar' %}" class="nav-link">Listar</a>
-                    <a href="{% url 'turma:registro_ausencia' %}" class="nav-link">Registrar Ausência</a>
-                </div>
-            </div>
-{% endblock %}            
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'turma:cadastro' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'turma:listar' %}" class="nav-link">Listar</a>            
+            <a href="#" class="nav-link">Registrar Ausência</a>
+        </div>
+    </div>
+{% endblock %}
 
 {% block titulo_pagina %}
 {% endblock %}
 
 {% block corpo %}
-<main class="container m-2 mx-auto my-font-family">
+    <main class="container m-2 mx-auto my-font-family">
 
         <div class="row">
             <div class="col text-center m-0">
@@ -27,103 +27,117 @@
             </div>
         </div>
 
-        <!-- tabela responsiva -->]
-         {% if turmas %}
-        <div class="table-responsive">
+        {% if turmas %}
+            <!-- tabela responsiva -->
+            <div class="table-responsive">
 
-            <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
-            <table class="table
-                        table-borderless
-                        text-center
-                        my-table-hover
-                        my-table-image
-                        my-table-td-first-child
-                        my-table-border-bottom
-                        my-table-th
-                        w-100">
+                <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
+                <table class="table
+                            table-borderless
+                            text-center
+                            my-table-hover
+                            my-table-image
+                            my-table-td-first-child
+                            my-table-border-bottom
+                            my-table-th
+                            w-100">
 
-                <!-- cabecalho -->
-                <thead>
-
-                    <tr>
-                        <!-- colunas cabecalho -->
-                        <th>Número</th>
-                        <th>Horário da Aula</th>
-                        <th>Duração da Aula</th>
-                        <th>Data Inicial</th>
-                        <th>Data Final</th>
-                        <th>Atividade</th>
-                        <th>Instrutor</th>
-                        <th>Titularidade</th>
-                        <th>Aluno Monitor</th>
-                    </tr>
-                </thead>
+                    <!-- cabecalho -->
+                    <thead>
+                        <!-- linhas -->
+                        <tr>
+                            <!-- colunas cabecalho -->
+                            <th>Número</th>
+                            <th>Horário da Aula</th>
+                            <th>Duração da Aula</th>
+                            <th>Data Inicial</th>
+                            <th>Data Final</th>
+                            <th>Atividade</th>
+                            <th>Instrutor</th>
+                            <th>Titularidade</th>
+                            <th>Aluno Monitor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
 
                     <!-- linhas -->
-                    {% for turma in turmas %}
+                    {% for t in turmas %}
                     <tr>
-                        <td>{{turma.numero}}</td>
-                        <td>{{turma.horarioAula}} </td>
-                        <td>{{turma.duracaoAula}}</td>
-                        <td>{{turma.dataInicial}}</td>
-                        <td>{{turma.dataFinal}}</td>
-                        <td>{{turma.codigoTipoAtividade}}</td>
-                        <td>{{turma.instrutor}}</td>
-                        <td>{{turma.idInstrutor}}</td>
-                        <td>{{turma.matriculaMonitor}}</td>
-                        <td>
-                            <a href="#" class="btn btn-mini"><i class="far fa-edit"></i></a>
-                            <button type="button" class="btn" role="button" data-target="#modalExcluirTurma"
-                                data-toggle="modal" data-descricao="{{turma.numero}}" 
-                                data-url="{% url 'turma:excluir' turma.codigoTipoAtividade %}">
-                                
-                                <i class="far fa-trash-alt"></i>
-                            </button>
+                        <td> {{ t.numero }} </td>
+                        <td> {{ t.horario_aula }} </td>
+                        <td> {{ t.duracao_aula }} </td>
+                        <td> {{ t.data_inicial|date:"d/m/Y" }} </td>
+                        <td> 
+                            {% if t.data_final %}
+                                {{ t.data_final|date:"d/m/Y" }} 
+                            {% else %}
+                                <i class="fas fa-minus"></i>
+                            {% endif %}
                         </td>
+                        <td> {{ t.codigo_atividade.descricao }} </td>
+                        <td> {{ t.id_instrutor.nome }} </td>
+                        <td> {{ t.id_instrutor.codigo_titulo.descricao }} </td>
+                        <td>
+                            {% if t.matricula_monitor %} 
+                                {{ t.matricula_monitor.nome }} 
+                            {% else %}
+                                <i class="fas fa-minus"></i>
+                            {% endif %}
+                        </td>
+                        <td>
+                        <a href="#" class="btn btn-mini"><i class="far fa-edit"></i></a>
+                        <button type="button" class="btn" role="button" data-target="#modalExcluirTurma"
+                                data-toggle="modal" data-numero="{{ t.numero }}" 
+                                data-url="{% url 'turma:excluir' t.numero %}">
+                                
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
                     </tr>
                     {% endfor %}
-            </table>
+                </table>
 
-        </div>
+            </div>
         {% else %}
-        <div class="text-danger text-center">
-            <p>Não há turmas cadastradas.</p>
-        </div>
+            <div class="text-danger text-center">
+                <p>Não há Turmas cadastradas.</p>
+            </div>        
         {% endif %}
 
-
     </main>
-<!-- Modais -->
+
+        <!-- Modais -->
     <div class="modal fade" id="modalExcluirTurma" role="dialog" aria-labelledby="Confirmação" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Confirmação</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Confirmação</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-            <div class="modal-body">
-                <p id="mensagemExclusao"></p>
-            </div>
+                <div class="modal-body">
+                    <p id="mensagemExclusao"></p>
+                </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnExcluir">Excluir</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnExcluir">Excluir</button>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+
 {% endblock %}
 
 {% block javascript_complementar %}
-    <!-- Prepara o modal com os dados da imagem do titulo a ser excluido -->
+    <!-- Prepara o modal com os dados da imagem do instrutor a ser excluido -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('#modalExcluirTurma').on('show.bs.modal', function(event) {
-                var descricao = $(event.relatedTarget).data('descricao');
+                var numero = $(event.relatedTarget).data('numero');
                 var urlExcluir = $(event.relatedTarget).data('url');
-                $("#mensagemExclusao").text("Turma [  " + descricao + "  ]?");
+                $("#mensagemExclusao").text("Turma [  " + numero + "  ]?");
 
                 $.fn.excluirTurma = function() {
                     var url = $(event.relatedTarget).data('url');
@@ -137,5 +151,4 @@
             });            
         });
     </script>
-{% endblock javascript_complementar %}
-
+{% endblock javascript_complementar %} 

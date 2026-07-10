@@ -15,22 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='escola.html')),
-    path('titulo/', include('titulo.urls')),
-    path('aluno/', include('aluno.urls')),
-    path('instrutor/', include('instrutor.urls')),
-    path('tipodeatividade/', include('tipodeatividade.urls')),
-    path('turma/', include('turma.urls')),
-    path('utilitarios/', include('utilitarios.urls')),
-    path('contato/', include('contato.urls')),
-    
- 
+    path('titulo/', include("titulo.urls")),
+    path('instrutor/', include("instrutor.urls")),
+    path('tipodeatividade/', include("tipodeatividade.urls")),
+    path('turma/', include("turma.urls")),
 ]
 
-
-
+# manipuladores de erro globais
+handler404 = 'titulo.views.error_404'
+handler500 = 'titulo.views.error_500'

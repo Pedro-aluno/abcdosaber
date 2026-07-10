@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views 
+from . import views
 
 app_name = 'instrutor'
 
@@ -7,5 +7,5 @@ urlpatterns = [
     path('lista/', views.listar, name='listar'),
     path('cadastro/', views.carregar_cadastro, name='cadastro'),
     path('cadastrar/', views.cadastrar, name='cadastrar'),
-    path('excluir/<int:codigoInstrutor>/', views.excluir, name='excluir'),
+    path('excluir/<int:id>', views.excluir, name='excluir'),
 ]

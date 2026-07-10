@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='titulo',
             name='codigo',
-            field=models.AutoField(help_text='Código do título', primary_key=True, serialize=False),
+            field=models.AutoField(help_text='Código do Título', primary_key=True, serialize=False),
         ),
     ]

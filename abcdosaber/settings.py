@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,11 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m6z!tr@0x6w3b&19t&&6fp!0cqk@!6(yidvp&hi@jwq9n9$nvq'
+SECRET_KEY = 'django-insecure-gbspek!!)g=s84kx=h1q47p+aj3ppaxiw+(y$zeq6^lhgdovw='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.56.1', '10.147.202.6']
+
 
 # Application definition
 
@@ -37,14 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'titulo.apps.TituloConfig',
-    'aluno.apps.AlunoConfig',
     'instrutor.apps.InstrutorConfig',
     'tipodeatividade.apps.TipodeatividadeConfig',
     'turma.apps.TurmaConfig',
-    'utilitarios.apps.UtilitariosConfig',
-    'contato.apps.ContatoConfig',
-
-
+    'aluno.apps.AlunoConfig',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates',
+            BASE_DIR / 'templates'
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,11 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
-
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
